@@ -1,4 +1,4 @@
-# loading
+# loading...
 
 # day01
 ## 1. 项目开发准备
