@@ -27,9 +27,14 @@ export default{
 	},
 
 		// 异步获取商家列表
-	async getShops({commit, state}) {
-		const {latitude, longitude} = state
-		const result = await reqShops({latitude, longitude})
-		commit(RECEIVE_SHOPS, {shops: result.data})
-	}
+		async getShops({commit, state}) {
+			// 发送异步ajax请求
+			const {longitude, latitude} = state
+			const result = await reqShops({longitude, latitude})
+			// 提交一个mutation
+			if (result.code === 0) {
+				const shops = result.data
+				commit(RECEIVE_SHOPS, {shops})
+			}
+		},
 }

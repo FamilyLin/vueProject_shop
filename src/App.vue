@@ -1,20 +1,24 @@
 <template>
   <div>
-    <router-view/>
-    <footer-guide v-show="$route.meta.showFooter == true"/>
+    <router-view />
+    <footer-guide v-show="$route.meta.showFooter == true" />
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'  //映射函数
 import FooterGuide from './components/FooterGuide/FooterGuide.vue'
-import {reqFoodCategorys} from './api'
 
 export default {
 
-  async mounted() {
-    const result = await reqFoodCategorys()
-    console.log(result)
+  mounted () {
+    // this.getAddress()
+    this.$store.dispatch('getAddress')
   },
+
+  // methods: {
+  //   ...mapActions(['getAddress'])
+  // },
 
   components: {
     FooterGuide

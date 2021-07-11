@@ -8,6 +8,6 @@ import store from './store'
 new Vue({
   el: '#app',
   render: h => h(App),
-  router,
-  store
+  router,  //使用vue-router
+  store   //使用vuex
 })

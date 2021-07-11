@@ -8,4 +8,5 @@ export default{
 	address: {}, //地址信息对象
 	categorys: [], //food分类数组
 	shops: [] //商家数组
+	//还有很多没写
 }
