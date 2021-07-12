@@ -5,13 +5,16 @@
         <h2 class="login_logo">硅谷外卖</h2>
         <div class="login_header_title">
           <a href="javascript:;"
-             class="on">短信登录</a>
-          <a href="javascript:;">密码登录</a>
+             :class="{on: loginWay}"
+             @click="loginWay = true">短信登录</a>
+          <a href="javascript:;"
+             :class="{on: !loginWay}"
+             @click="loginWay = false">密码登录</a>
         </div>
       </div>
       <div class="login_content">
         <form>
-          <div class="on">
+          <div :class="{on: loginWay}">
             <section class="login_message">
               <input type="tel"
                      maxlength="11"
@@ -29,7 +32,7 @@
               <a href="javascript:;">《用户服务协议》</a>
             </section>
           </div>
-          <div>
+          <div :class="{on: !loginWay}">
             <section>
               <section class="login_message">
                 <input type="tel"
@@ -71,7 +74,11 @@
 
 <script>
 export default {
-
+  data () {
+    return {
+      loginWay: true, //true代表短信登录，false代表密码登录
+    }
+  },
 }
 </script>
 
