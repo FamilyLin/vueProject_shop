@@ -20,8 +20,8 @@
 import ShopHeaer from '../../components/ShopHeader/ShopHeaer.vue'
 
 export default {
-  components: {
-    ShopHeaer
+  mounted(){
+    this.$store.dispatch('getShopInfo')
   }
 }
 </script>
