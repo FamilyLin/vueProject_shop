@@ -68,28 +68,27 @@ export default{
 		},
 
 		// 异步获取商家信息
-async getShopInfo({commit}, cb) {
-	const result = await reqShopInfo()
-	if(result.code===0) {
-	const info = result.data
-	info.score = 3.5
-	commit(RECEIVE_INFO, {info})
-	}
-},
+	async getShopInfo({commit}) {
+		const result = await reqShopInfo()
+		if(result.code===0) {
+			const info = result.data
+			commit(RECEIVE_INFO, {info})
+		}
+	},
 	// 异步获取商家评价列表
-async getShopRatings({commit}, cb) {
-	const result = await reqShopRatings()
-	if(result.code===0) {
-		const ratings = result.data
-		commit(RECEIVE_RATINGS, {ratings})
-	}
-},
+	async getShopRatings({commit}) {
+		const result = await reqShopRatings()
+		if(result.code===0) {
+			const ratings = result.data
+			commit(RECEIVE_RATINGS, {ratings})
+		}
+	},
 // 异步获取商家商品列表
-async getShopGoods({commit}, cb) {
-	const result = await reqShopGoods()
-	if(result.code===0) {
-		const goods = result.data
-		commit(RECEIVE_GOODS, {goods})
-	}
-},
+	async getShopGoods({commit}) {
+		const result = await reqShopGoods()
+		if(result.code===0) {
+			const goods = result.data
+			commit(RECEIVE_GOODS, {goods})
+		}
+	},
 }

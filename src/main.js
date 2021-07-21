@@ -6,7 +6,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 
-// 不需要暴露任何数据，只需要执行就可以
+// 不需要暴露任何数据，只需要加載就可以
 import './mock/mockServer'   
 /* eslint-disable no-new */
 //注册全局组件标签
