@@ -1,12 +1,13 @@
 <template>
   <div>
     <div class="goods">
-      <div class="menu-wrapper"
-           ref="menuWrapper">
+      <div class="menu-wrapper">
         <ul>
           <li class="menu-item"
               v-for="(good,index) in goods"
-              :key="index">
+              :key="index"
+              :class="{current: currentIndex === index}"
+              @click="clickMenuItem(index)">
             <span class="text bottom-border-1px">
               <img class="icon"
                    :src="good.icon"
@@ -16,8 +17,7 @@
           </li>
         </ul>
       </div>
-      <div class="foods-wrapper"
-           ref="foodsWrapper">
+      <div class="foods-wrapper">
         <ul>
           <li class="food-list-hook"
               v-for="(good,index) in goods"
@@ -61,11 +61,28 @@
 <script>
 // 读取数据
 import { mapState } from 'vuex'
+import BScroll from 'better-scroll'
 
 export default {
+
+  data () {
+    return {
+      scrollY: 0,  //右侧滑动的Y轴坐标（滑动过程实时变化）
+      tops: [],   //所有右侧分类li的top组成的数组（列表第一次显示后就不再变化）
+    }
+  },
   // 触发异步调用，获取数据
   mounted () {
-    this.$store.dispatch('getShopGoods')
+    this.$store.dispatch('getShopGoods', () => {
+      // 数据更新后执行
+      this.$nextTick(() => {
+        // 列表显示之后创建
+        new BScroll('.menu-wrapper');
+        new BScroll('.foods-wrapper')
+      })
+
+
+    })
   },
   // 映射
   computed: {
