@@ -1,7 +1,7 @@
 <template>
-	<div>
-		shopinfo
-	</div>
+  <div>
+    shopinfo
+  </div>
 </template>
 
 <script>
@@ -10,6 +10,4 @@ export default {
 }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
-
-</style>
+<style lang="stylus" rel="stylesheet/stylus"></style>

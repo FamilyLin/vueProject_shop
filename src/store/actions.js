@@ -11,7 +11,7 @@ import {
 import { 
 	RECEIVE_ADDRESS, RECEIVE_CATEGORYS, RECEIVE_SHOPS, 
 	RECEIVE_USERINFO, RESET_USERINFO,RECEIVE_GOODS,
-	RECEIVE_INFO,RECEIVE_RATINGS 
+	RECEIVE_INFO,RECEIVE_RATINGS,INCREMENT_FOOD_COUNT,DECREMENT_FOOD_COUNT
 } from './mutation-types'
 
 export default{
@@ -94,4 +94,13 @@ export default{
 			callback && callback()
 		}
 	},
+
+	updateFoodCount({commit}, {food,isAdd}){
+		if(isAdd){
+			commit(INCREMENT_FOOD_COUNT,{food})
+		}else{
+			commit(DECREMENT_FOOD_COUNT,{food})
+		}
+	},
+	
 }
