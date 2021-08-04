@@ -2,10 +2,11 @@
   <div class="cartcontrol">
     <div class="iconfont icon-remove_circle_outline"
          v-if="food.count"
-         @click="updateFoodCount(false)"></div>
+         @click.stop="updateFoodCount(false)"></div>
     <div class="cart-count"
          v-if="food.count">{{food.count}}</div>
-    <div class="iconfont icon-add_circle" @click="updateFoodCount(true)"></div>
+    <div class="iconfont icon-add_circle"
+         @click.stop="updateFoodCount(true)"></div>
   </div>
 </template>
 
@@ -14,12 +15,12 @@ export default {
   props: {
     food: Object
   },
-	methods: {
-		updateFoodCount(isAdd){
-			const {food} = this;
-			this.$store.dispatch('updateFoodCount', {food, isAdd})
-		}
-	},
+  methods: {
+    updateFoodCount (isAdd) {
+      const { food } = this;
+      this.$store.dispatch('updateFoodCount', { food, isAdd })
+    }
+  },
 }
 </script>
 
