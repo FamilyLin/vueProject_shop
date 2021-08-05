@@ -1,6 +1,7 @@
 /**
  * 直接更新state的多个方法的对象
  */
+import { startOfToday } from 'date-fns'
 import Vue from 'vue'
 
 import {
@@ -13,7 +14,8 @@ import {
 	RECEIVE_RATINGS,
 	RECEIVE_INFO,
 	INCREMENT_FOOD_COUNT,
-	DECREMENT_FOOD_COUNT
+	DECREMENT_FOOD_COUNT,
+	CLEAR_CART
 }from './mutation-types'
 
 export default{
@@ -44,7 +46,8 @@ export default{
 
 	[INCREMENT_FOOD_COUNT](state,{food}){
 		if(!food.count){
-			Vue.set(food,'count',1)
+			Vue.set(food,'count',1);
+			//将food添加到cartFoods中
 			state.shopCart.push(food)
 		}else{
 			food.count++
@@ -58,4 +61,9 @@ export default{
 			}
 		}
 	},
+	[CLEAR_CART](state){
+		state.shopCart.forEach(food=>food.count = 0)
+
+		startOfToday.shopCart =[]
+	}
 }
